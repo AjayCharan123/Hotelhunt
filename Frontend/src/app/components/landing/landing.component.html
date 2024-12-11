@@ -1,0 +1,108 @@
+<div class="container py-3">
+    <div class="d-lg-flex bg-lightblue align-items-center justify-content-between rounded px-4 py-5">
+        <div class="mx-4">
+            <h2 class="display-5 fw-bold text-lightblue mb-4">HotelHunt, where luxury meets comfort in the heart of
+                Canada.</h2>
+            <p class="fs-5 text-secondary">Experience unparalleled hospitality and exquisite accommodations designed for
+                your perfect getaway.</p>
+        </div>
+        <div class="pt-5 pt-lg-0 image-wrapper">
+            <img src="https://booking.webestica.com/assets/images/bg/06.jpg" class="img-fluid overlapping-image"
+                alt="image">
+        </div>
+    </div>
+
+    <div class="container shadow-sm p-5 my-5">
+        <h3 class="fw-bold mb-5 text-lightblue">Search Hotels</h3>
+        <form novalidate [formGroup]="searchForm">
+            <div class="row">
+                <div class="col-md">
+                    <label class="fw-bold mb-2"><i class="fa fa-hotel text-lightblue"></i> Hotel Name/City</label>
+                    <input type="text" class="form-control" formControlName="keyword" />
+                </div>
+                <div class="col-md mt-3 mt-md-0">
+                    <label class="fw-bold mb-2"><i class="fa fa-calendar text-lightblue"></i> CheckIn</label>
+                    <input type="date" class="form-control" formControlName="checkinDate"
+                        min="{{todayDate | date: 'yyyy-MM-dd'}}"
+                        [ngClass]="{ 'is-invalid': (CheckinDate.touched || CheckinDate.dirty) && !CheckinDate.valid }" />
+                    <span *ngIf="CheckinDate.invalid && CheckinDate.touched">
+                        <small *ngIf="CheckinDate.errors?.['required']" class="text-danger">Checkin Date is
+                            required</small>
+                    </span>
+                </div>
+                <div class="col-md mt-3 mt-md-0">
+                    <label class="fw-bold mb-2"><i class="fa fa-calendar text-lightblue"></i> CheckOut</label>
+                    <input type="date" class="form-control" formControlName="checkoutDate"
+                        [ngClass]="{ 'is-invalid': (CheckoutDate.touched || CheckoutDate.dirty) && !CheckoutDate.valid }" />
+                    <span *ngIf="CheckoutDate.invalid && CheckoutDate.touched">
+                        <small *ngIf="CheckoutDate.errors?.['required']" class="text-danger">Checkout Date is
+                            required</small>
+                    </span>
+                </div>
+                <div class="col-md mt-3 mt-md-0 d-grid align-items-end">
+                    <button type="submit" [disabled]="!searchForm.valid"
+                        class="btn btn-blue fw-bold fs-5 py-2 rounded-1">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div class="container my-5 pt-5">
+        <div class="section-title">
+            <h2 class="m-0 p-0">POPULAR DESTINATIONS</h2>
+            <p class="fw-bold text-lightblue">find the perfect place to stay</p>
+        </div>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-center">
+                        <!-- First 4 city cards -->
+                        <a class="card" [routerLink]="['/hotels', city.name]" *ngFor="let city of cities.slice(0, 4)">
+                            <div class="card-img-overlay"
+                                [ngStyle]="{ 'background-image': 'url(' + city.imageUrl + ')' }">
+                                <div class="card-title">{{ city.name }}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Additional carousel items -->
+                <div class="carousel-item" *ngFor="let i of [1, 2, 3]">
+                    <div class="d-flex justify-content-center">
+                        <a [routerLink]="['/hotels', city.name]" class="card" *ngFor="
+            let city of cities.slice(i * 4, i * 4 + 4)
+          ">
+                            <div class="card-img-overlay"
+                                [ngStyle]="{ 'background-image': 'url(' + city.imageUrl + ')' }">
+                                <div class="card-title">{{ city.name }}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container my-5 pt-5">
+        <div class="section-title">
+            <h2 class="m-0 p-0">Most Rated</h2>
+            <p class="fw-bold text-lightblue">Best Hotel Options Out There</p>
+        </div>
+        <app-hotels-grid [mostRated]="true" />
+    </div>
+
+
+</div>

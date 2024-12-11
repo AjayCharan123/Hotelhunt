@@ -1,0 +1,79 @@
+<section>
+
+    <nav class="toolbox toolbox-horizontal mt-5">
+        <div class="container">
+            <form [formGroup]="filterForm" (ngSubmit)="applyFilters()">
+                <div class="d-flex flex-wrap align-items-center justify-content-between p-4 bg-light border rounded">
+
+                    <!-- Price Range Filter -->
+                    <div class="toolbox-item me-2">
+                        <label for="priceRange" class="form-label text-lightblue">Price Range</label>
+                        <div class="d-flex">
+                            <input type="number" id="minPrice" class="form-control me-2" placeholder="Min"
+                                formControlName="minPrice" style="width: 150px;">
+                            <input type="number" id="maxPrice" class="form-control" placeholder="Max"
+                                formControlName="maxPrice" style="width: 150px;">
+                        </div>
+                    </div>
+
+                    <!-- Rating Filter -->
+                    <div class="toolbox-item me-2">
+                        <label for="ratingFilter" class="form-label text-lightblue">Rating</label>
+                        <select id="ratingFilter" class="form-select" formControlName="rating" style="width: 200px;">
+                            <option value="">All Ratings</option>
+                            <option value="10">10 Stars</option>
+                            <option value="9">9 Stars & Up</option>
+                            <option value="8">8 Stars & Up</option>
+                            <option value="7">7 Stars & Up</option>
+                            <option value="6">6 Stars & Up</option>
+                            <option value="5">5 Stars & Up</option>
+                            <option value="4">4 Stars & Up</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <!-- Sort By -->
+                    <div class="toolbox-item">
+                        <label for="sortBy" class="form-label text-lightblue">Sort By</label>
+                        <select id="sortBy" class="form-select" formControlName="sortBy" style="width: 200px;">
+                            <option value="default" selected>Default</option>
+                            <option value="rating">Rating</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+
+                    <!-- Apply Filters Button -->
+                    <div class="toolbox-item">
+                        <button type="submit" class="btn btn-blue fw-bold p-2">Apply Filters</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+
+
+
+    <div *ngIf="hotels.length > 0" class="pt-4">
+        <div class="d-flex justify-content-center align-content-around flex-wrap">
+            <div *ngFor="let hotel of hotels" class="card shadow m-3 p-1" style="width: 20rem;">
+                <img [src]="hotel['Image Link']" class="card-img-top rounded" alt="img-fluid" height="220px">
+                <div class="card-body mt-2">
+                    <span class="btn-blue rounded text-white px-1">⭐ {{hotel['Rating']}}</span>
+                    <h5 class="card-title text-lightblue fs-5 fw-bold mt-2">{{hotel['Hotel Name']}}</h5>
+                    <h6 class="card-title text-secondary fs-6 mt-2">{{hotel['Description']}}</h6>
+                    <h6 class="my-3 text-blue"><i class="fa fa-location-dot"></i> {{hotel['Location']}} </h6>
+                    <div class="d-flex justify-content-between align-items-end">
+                        <span class="fs-5 text-lightblue fw-bold">{{hotel['Price']}}<span
+                                class="text-secondary lead">/night</span>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

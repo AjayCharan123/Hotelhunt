@@ -1,0 +1,67 @@
+.bg-lightblue {
+    background: #edf0f3;
+}
+.text-lightblue {
+    color: #3d799a;
+}
+.text-blue {
+    color: #304b89;
+}
+.btn-blue {
+    background: #3d799a;
+    color: #fff;
+}
+
+.text-lightblue:hover {
+    color: #3d799a;
+}
+.text-blue:hover {
+    color: #304b89;
+}
+.btn-blue:hover {
+    background: #3d799a;
+    color: #fff;
+}
+
+.section-title h2 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1px;
+    color: color-mix(in srgb, #444444, transparent 50%);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.section-title h2::after {
+    content: "";
+    width: 150px;
+    height: 1.5px;
+    display: inline-block;
+    background: color-mix(in srgb, #444444, transparent 50%);;
+    margin: 0px 8px;
+}
+
+.section-title p {
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
