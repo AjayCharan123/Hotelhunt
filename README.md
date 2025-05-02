@@ -1,52 +1,100 @@
-# 🏨 HotelHunt - Hotel Price Analysis Platform
+**HotelHunt**
 
-HotelHunt is a full-stack Java web application that helps users find the best hotel deals by crawling multiple travel websites and comparing prices and ratings. It combines real-time data scraping with intelligent search features like spell-check, autocomplete, and keyword-based filtering.
+Situation:
+    This project came into my consideration after I felt that, as a student, I always try to book budget-friendly hotels when I travel. But I noticed that there is no one-stop solution to compare all hotel          deals. Some hotels are exclusive to one website, and prices vary across platforms like Booking.com, Trivago, or Hotwire. So, it becomes confusing and time-consuming to check each one.
+    
+    That’s when I got the idea for HotelHunt – a website that brings together real-time hotel prices from multiple booking platforms and helps users find the best deals in one place.
 
-## 🚀 Features
+Task:
+    The main task was to build a website that:
+    
+    Collects hotel prices and details automatically from multiple websites.
+    
+    Lets users search and filter hotels by location, rating, and price.
+    
+    Supports features like spell correction, autocomplete, and smart search.
+    
+    Shows the most searched cities and top-rated hotels to help users make better decisions.
 
-- 🔍 **Web Crawling & Data Extraction**: Automated scraping from sites like Booking.com, Trivago, and Hotwire using Selenium.
-- ✨ **Spell Checking & Autocomplete**: Corrects typos in city names and provides real-time search suggestions using Trie and Edit-Distance algorithms.
-- 🔑 **Keyword-Based Search**: Implements inverted indexing and regex-based pattern recognition for efficient search.
-- 📊 **Filter & Ranking**: Filters hotels by price, rating, and amenities. Includes frequency-based page ranking and user behavior tracking.
-- 📈 **Search Analytics**: Tracks the frequency of searched terms and filters using hash maps and min-heaps.
-- 🖼️ **Responsive UI**: Frontend built with HTML, CSS, and Bootstrap for seamless user interaction.
-- 🧠 **Backend Architecture**: Developed in Java with Spring Boot. REST APIs handle hotel data, search, and filters.
-- 🗃️ **Data Storage**: Parsed hotel data is stored in CSV files and processed for visualization.
+Action
+    To achieve this, we:
 
-## 🧩 Technologies Used
+    Used Selenium:
+    We used Selenium WebDriver to automatically open hotel websites like Booking.com and Trivago, collect hotel names, ratings, prices, and save the data into a CSV file. This helped us simulate what a user         would manually do — but faster and more accurately.
+    
+    Designed Backend with Java + Spring Boot:
+    We built the backend using Java and Spring Boot. It acts like the “brain” of the website. It receives user search requests, processes them, and returns filtered hotel results. It also handles spell check,       keyword matching, frequency tracking, and filter logic.
+    
+    Created Frontend with HTML + CSS + Bootstrap:
+    We built a simple and responsive user interface so users can enter their search details like city name, check-in/check-out dates, and apply filters. The interface is clean and works well on desktops and         mobile devices.
+    
+    Built Smart Search and Filters:
+    
+    Spell Checker: If a user types “Tornto” instead of “Toronto”, it gets corrected.
+    
+    Autocomplete: When users start typing, suggestions appear instantly.
+    
+    Filters: Users can filter based on price, rating, and amenities.
+    
+    Search Frequency & Ranking: We tracked what people search most often and used that data to recommend popular cities or hotels.
 
-**Frontend:** HTML, CSS, Bootstrap  
-**Backend:** Java, Spring Boot  
-**Data Extraction:** Selenium WebDriver  
-**Data Structures:** Trie, HashMap, Priority Queue (Min-Heap)  
-**Validation:** Regex  
-**Tools:** Eclipse, CSVReader, Maven
+Result:
+    We built a working system that could show real-time, filtered, and corrected hotel data from different websites in one place.
+    
+    Users could quickly compare hotels, even if they made typos or weren’t sure what to search.
+    
+    The website saved time and helped make smarter booking decisions, especially for students and budget travelers.
+    
+    It showed how automation, backend processing, and good UI can come together to solve a real-world problem.
 
-## 📂 Project Structure
+🔧 Technology Stack Overview
+🛠️ Web Crawling (Selenium)
+Selenium WebDriver was used to simulate users visiting hotel websites.
 
-- `HotelController.java` – APIs for retrieving hotel info by city and rating.
-- `SearchController.java` – APIs for search queries, frequency count, and autocomplete.
-- `SearchService.java` – Business logic for keyword matching, spell-check, and search.
-- `Filters.java`, `FrequencyCount.java` – Core features for filtering and analytics.
+It collected data like hotel names, ratings, prices, and saved everything in CSV files.
 
+This data became the input for our backend to work with.
 
-## 🧠 Contributors
+Backend:
+The backend was developed in Java using Spring Boot.
 
-- Ajay Charan – Frequency count, filters, controller & backend logic  
-- Sumandeep Kaur – Page ranking, GUI, most-rated hotel logic  
-- Priyam Suratwala – Word completion, pattern detection  
-- Aanchal Jariwala – Spell check, inverted index  
-- Gurpreet Singh – Search frequency, data validation
+It read hotel data from CSV, handled REST APIs, and processed logic for:
 
-## 📌 How to Run
+Searching hotels by city or keyword
 
-1. Clone the repository
-2. Start the Spring Boot application via `mvn spring-boot:run`
-3. Open `index.html` to access the frontend
-4. Ensure ChromeDriver and Selenium setup is properly configured
+Sorting hotels by price or rating
 
-## 📄 License
+Handling spelling mistakes and suggestions
 
-This project is for educational purposes only. No commercial use intended.
+Tracking what people searched the most
 
----
+Classes like HotelController, SearchController, and SearchService managed the API logic and communication between frontend and backend.
+
+Frontend:
+The frontend was built with HTML, CSS, and Bootstrap.
+
+It allowed users to:
+
+Enter city and dates
+
+View filtered hotel results
+
+Interact with a clean and user-friendly interface
+
+Database / Data Management:
+We did not use a traditional database.
+
+Instead, we used CSV files generated by Selenium to store hotel data.
+
+The backend reads these files and processes them like a database to show search results and metrics.
+
+🔗 How It All Connects
+Selenium scrapes hotel data and saves it in CSV.
+
+Spring Boot Backend reads the CSV and provides APIs.
+
+Frontend sends user input (city, filters) to the backend.
+
+Backend returns results (with corrected spellings or filtered hotels).
+
+Frontend displays it to the user instantly.
