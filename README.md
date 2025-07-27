@@ -9,11 +9,9 @@ I used Selenium to automatically browse hotel websites, collect data like hotel 
 
 ---
 ## 📂 Folder Structure  
-/scraper → Selenium scripts to scrape hotel websites <br>
-/data → CSV files with scraped hotel data <br>
+
 /backend → Spring Boot backend (controllers, services) <br>
 /frontend → HTML, CSS, Bootstrap files <br>
-/hotelhunt.csv → Consolidated data file used as backend input <br>
 
 ---
 
